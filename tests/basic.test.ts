@@ -6,9 +6,9 @@ const puppeteer = require('puppeteer');
 let browser:any, page, content;
  describe('test', ()=>{
    beforeAll(async()=>{
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    const content = await page.goto(url, {waitUntil:'networkidle2'});
+    browser = await puppeteer.launch();
+    page = await browser.newPage();
+    content = await page.goto(url, {waitUntil:'networkidle2'});
    });
    afterAll(()=>{
     browser.close();
