@@ -3,19 +3,17 @@ var url ='https://google.com';
 
 const puppeteer = require('puppeteer');
 
-(async() => {
-
-const browser = await puppeteer.launch();
-const page = await browser.newPage();
-const content = await page.goto(url, {waitUntil:'networkidle2'});
-browser.close();
-
- })();
-
+let browser:any, page, content;
  describe('test', ()=>{
-   beforeAll(()=>{
+   beforeAll(async()=>{
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    const content = await page.goto(url, {waitUntil:'networkidle2'});
+   });
+   afterAll(()=>{
+    browser.close();
    });
    it('basic ',async (done)=>{
-     done();
+     setTimeout(()=>{done();}, 1000);
    });
  });
